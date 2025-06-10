@@ -1,8 +1,15 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 
 export const About = () => {
-  const frontendSkills = ["React", "Vue", "Typescript"];
-  const backendSkills = ["Python", "Node.js", "AWS"];
+  const frontendSkills = ["React", "C#", "C++", "CSS", "JS", "Java"];
+  const backendSkills = [
+    "Python",
+    "Node.js",
+    "AWS",
+    " SQL Server",
+    "Django",
+    "Docker",
+  ];
 
   return (
     <section
@@ -15,8 +22,16 @@ export const About = () => {
             About Me
           </h2>
 
-          <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
-            <p className="text-gray-600 mb-6">I am a passionate developer.</p>
+          <div className="bg-gray-800 rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
+            <p className="mb-2 text-justify">
+              I'm a Front-End Engineer based in Chino Hills, California, with a
+              passion for creating intuitive user interfaces and seamless
+              digital experiences. I'm driven by the challenge of transforming
+              complex ideas into polished, user-friendly applications that make
+              a real impact. Whether I'm collaborating with teams to meet tight
+              deadlines or exploring the latest developments in AI, I'm always
+              looking for creative solutions to complex problems.
+            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="rounded-xl p-6 hover:-translate-y-1 transition-all">
@@ -49,7 +64,7 @@ export const About = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 bg-gray-800">
             <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
               <h3 className="text-xl font-bold mb-4">Education</h3>
               <ul>
@@ -57,12 +72,14 @@ export const About = () => {
                   <strong>B.S. in Computer Science</strong> - Cal Poly Pomona
                 </li>
                 <li>
-                  <strong>Relevant Coursework:</strong> Data Structures, Web
-                  Development, Cloud Computing...
+                  <strong>Relevant Coursework:</strong> Software Engineering,
+                  Object Oriented Programming, GUI Programming, Design and
+                  Analysis of Algorithms, Data Structures, Discrete Structures,
+                  Operating Systems
                 </li>
               </ul>
             </div>
-            <div className="p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
+            <div className="p-6 rounded-xl border-white/10 border bg-gray-800 hover:-translate-y-1 transition-all">
               <h3 className="text-xl font-bold mb-4">Experience</h3>
               <div className="space-y-4 text-gray-300">
                 <div>
