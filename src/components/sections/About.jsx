@@ -24,13 +24,14 @@ export const About = () => {
 
           <div className="bg-gray-800 rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
             <p className="mb-2 text-justify">
-              I'm a Front-End Engineer based in Chino Hills, California, with a
-              passion for creating intuitive user interfaces and seamless
-              digital experiences. I'm driven by the challenge of transforming
-              complex ideas into polished, user-friendly applications that make
-              a real impact. Whether I'm collaborating with teams to meet tight
-              deadlines or exploring the latest developments in AI, I'm always
-              looking for creative solutions to complex problems.
+              I am a Front-End Engineer based in Chino Hills, California, with a
+              strong passion for creating intuitive user interfaces and seamless
+              digital experiences. The challenge of transforming complex ideas
+              into polished, user-friendly applications that make a real impact
+              drives me to be work hard and diligently. Whether I'm
+              collaborating with teams to meet tight deadlines or exploring the
+              latest developments in AI, I'm always looking for creative
+              solutions to complex problems.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
