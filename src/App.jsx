@@ -79,11 +79,13 @@ function App() {
   return (
     <>
       {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
-
       <div
         className={`
           relative
           min-h-screen
+          w-full
+          max-w-full
+          overflow-x-hidden
           bg-gray-800
           text-gray-100
           transition-opacity duration-700 ${
@@ -92,7 +94,7 @@ function App() {
         `}
       >
         {/* Particles container */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 w-full h-full">
           <Particles
             id="tsparticles"
             init={particlesInit}
@@ -103,7 +105,7 @@ function App() {
         </div>
 
         {/* Your UI in front */}
-        <div className="relative z-10">
+        <div className="relative z-10 w-full max-w-full">
           <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           <Home />

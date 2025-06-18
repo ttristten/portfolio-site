@@ -1,7 +1,7 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 
 export const About = () => {
-  const frontendSkills = ["React", "C#", "C++", "CSS", "JS", "Java"];
+  const frontendSkills = ["React", "C++", "HTML", "CSS", "JS", "Java"];
   const backendSkills = [
     "Python",
     "Node.js",
@@ -88,20 +88,20 @@ export const About = () => {
                     Frontend Developer at HypefactorAI (2024 - present)
                   </h4>
                   <p>
-                    Development of user interfaces for AI-powered marketing
+                    - Development of user interfaces for AI-powered marketing
                     software, enhancing the brand personality creation process
                     and streamlining marketing asset generation, leading to
                     higher user satisfaction scores.
                   </p>
                   <p>
-                    Coordinated with backend teams to ensure seamless
+                    - Coordinated with backend teams to ensure seamless
                     functionality and meet tight deadlines.
                   </p>
                   <p>
-                    Headed the creation of OpenAI-powered assets, improving the
-                    training process for AI assistants and reducing development
-                    time by 50% by implementing prompt chaining techniques and
-                    agentic systems.
+                    - Headed the creation of OpenAI-powered assets, improving
+                    the training process for AI assistants and reducing
+                    development time by 50% by implementing prompt chaining
+                    techniques and agentic systems.
                   </p>
                 </div>
               </div>

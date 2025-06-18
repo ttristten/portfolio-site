@@ -6,13 +6,29 @@ import logo from "../assets/CircleNameWhiteText.png";
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
   const [scrolled, setScrolled] = useState(false);
   const [scrolledUp, setScrolledUp] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const lastScrollY = useRef(0);
+
+  // Detect if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
   }, [menuOpen]);
 
   useEffect(() => {
+    // Only add scroll listener on desktop
+    if (isMobile) return;
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
@@ -29,7 +45,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMobile]);
 
   const floatProps = {
     animate: {
@@ -87,12 +103,12 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
         fixed top-0 w-full z-40
         transition-all duration-300
         bg-black/25 backdrop-blur-md
-        ${scrolledUp ? "py-8" : ""}
+        ${!isMobile && scrolledUp ? "py-8" : ""}
       `}
     >
       <motion.div
         animate={{
-          scale: scrolledUp ? 1 : 0.8,
+          scale: !isMobile && !scrolledUp ? 0.8 : 1,
         }}
         transition={{
           duration: 0.3,
@@ -101,31 +117,39 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
         className="max-w-5xl mx-auto px-4"
       >
         <div className="flex justify-between items-center h-16">
-          {/* Logo - fades out when scrolling down */}
+          {/* Logo - smaller on mobile, larger on desktop */}
           <motion.img
             src={logo}
             alt="My Logo"
-            className={`w-24 h-24 cursor-default`}
+            className={`w-10 h-10 md:w-24 md:h-24 cursor-default`}
             initial={{ opacity: 0, y: 20 }}
-            animate={{
-              ...floatProps.animate,
-              opacity: scrolledUp ? [1, 0.8, 1] : 0,
-              scale: scrolledUp ? 1 : 0.8,
-            }}
-            transition={{
-              ...floatProps.transition,
-              opacity: {
-                duration: scrolledUp ? 2 : 0.3,
-                repeat: scrolledUp ? Infinity : 0,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              },
-              scale: {
-                duration: 0.3,
-                ease: "easeInOut",
-              },
-            }}
-            whileHover={scrolledUp ? floatProps.whileHover : {}}
+            animate={
+              isMobile
+                ? { opacity: 1, y: 0 }
+                : {
+                    ...floatProps.animate,
+                    opacity: !scrolledUp ? 0 : [1, 0.8, 1],
+                    scale: !scrolledUp ? 0.8 : 1,
+                  }
+            }
+            transition={
+              isMobile
+                ? { duration: 0.3 }
+                : {
+                    ...floatProps.transition,
+                    opacity: {
+                      duration: scrolledUp ? 2 : 0.3,
+                      repeat: scrolledUp ? Infinity : 0,
+                      repeatType: "reverse",
+                      ease: "easeInOut",
+                    },
+                    scale: {
+                      duration: 0.3,
+                      ease: "easeInOut",
+                    },
+                  }
+            }
+            whileHover={!isMobile && scrolledUp ? floatProps.whileHover : {}}
           />
 
           {/* mobile hamburger */}
@@ -136,12 +160,12 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
             &#9776;
           </div>
 
-          {/* desktop menu + social icons */}
+          {/* desktop menu */}
           <div className="hidden md:flex items-center space-x-6">
             {["home", "about", "projects", "contact"].map((section) => (
               <motion.a
                 key={section}
-                {...floatWords}
+                {...(isMobile ? {} : floatWords)}
                 href={`#${section}`}
                 className="text-gray-300 hover:text-white transition text-3xl"
               >
@@ -150,12 +174,12 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
             ))}
           </div>
 
-          {/* social icons - fade out when scrolling down */}
+          {/* social icons - hidden on mobile, visible on desktop */}
           <motion.div
-            className="flex flex-row space-x-5"
+            className="hidden md:flex flex-row space-x-5"
             animate={{
-              opacity: scrolledUp ? 1 : 0,
-              scale: scrolledUp ? 1 : 0.8,
+              opacity: !isMobile && !scrolledUp ? 0 : 1,
+              scale: !isMobile && !scrolledUp ? 0.8 : 1,
             }}
             transition={{
               duration: 0.3,
@@ -163,49 +187,51 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
             }}
           >
             <motion.a
-              {...floatProps}
+              {...(isMobile ? {} : floatProps)}
               className="text-gray-300 hover:text-white transition"
               href="https://github.com/ttristten"
               target="_blank"
               rel="noopener noreferrer"
               animate={{
-                ...floatProps.animate,
-                opacity: scrolledUp ? [1, 0.8, 1] : 0,
+                ...(isMobile ? {} : floatProps.animate),
+                opacity:
+                  !isMobile && !scrolledUp ? 0 : isMobile ? 1 : [1, 0.8, 1],
               }}
               transition={{
                 ...floatProps.transition,
                 opacity: {
-                  duration: scrolledUp ? 2 : 0.3,
-                  repeat: scrolledUp ? Infinity : 0,
+                  duration: !isMobile && scrolledUp ? 2 : 0.3,
+                  repeat: !isMobile && scrolledUp ? Infinity : 0,
                   repeatType: "reverse",
                   ease: "easeInOut",
                 },
               }}
-              whileHover={scrolledUp ? floatProps.whileHover : {}}
+              whileHover={!isMobile && scrolledUp ? floatProps.whileHover : {}}
             >
               <FaGithub size={40} />
             </motion.a>
 
             <motion.a
-              {...floatProps}
+              {...(isMobile ? {} : floatProps)}
               className="text-gray-300 hover:text-white transition"
               href="https://linkedin.com/in/tristen-bizzaro-265633253"
               target="_blank"
               rel="noopener noreferrer"
               animate={{
-                ...floatProps.animate,
-                opacity: scrolledUp ? [1, 0.8, 1] : 0,
+                ...(isMobile ? {} : floatProps.animate),
+                opacity:
+                  !isMobile && !scrolledUp ? 0 : isMobile ? 1 : [1, 0.8, 1],
               }}
               transition={{
                 ...floatProps.transition,
                 opacity: {
-                  duration: scrolledUp ? 2 : 0.3,
-                  repeat: scrolledUp ? Infinity : 0,
+                  duration: !isMobile && scrolledUp ? 2 : 0.3,
+                  repeat: !isMobile && scrolledUp ? Infinity : 0,
                   repeatType: "reverse",
                   ease: "easeInOut",
                 },
               }}
-              whileHover={scrolledUp ? floatProps.whileHover : {}}
+              whileHover={!isMobile && scrolledUp ? floatProps.whileHover : {}}
             >
               <FaLinkedin size={40} />
             </motion.a>

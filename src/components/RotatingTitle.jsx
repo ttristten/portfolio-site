@@ -41,7 +41,7 @@ export const RotatingTitle = () => {
 
   return (
     <div className="mb-8">
-      <h3 className="text-gray-400 text-xl text-right w-[550px]">
+      <h3 className="text-gray-400 text-xl text-center sm:text-right w-[300px] sm:w-[550px]">
         I am a{" "}
         <span className="text-blue-400 font-semibold">
           {displayText}

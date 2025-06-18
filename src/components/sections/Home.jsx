@@ -18,7 +18,7 @@ export const Home = () => {
 
             <RotatingTitle />
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-auto">
               <a
                 href="#projects"
                 className="bg-blue-500 text-white px-6 py-3 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 text-center min-w-[140px]"
