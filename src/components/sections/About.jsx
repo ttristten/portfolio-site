@@ -24,7 +24,7 @@ export const About = () => {
 
           <div className="bg-gray-800 rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
             <p className="mb-2 text-justify">
-              I am a Front-End Engineer based in Chino Hills, California, with a
+              I am a Software Engineer based in Chino Hills, California, with a
               strong passion for creating intuitive user interfaces and seamless
               digital experiences. The challenge of transforming complex ideas
               into polished, user-friendly applications that make a real impact
@@ -85,7 +85,7 @@ export const About = () => {
               <div className="space-y-4 text-gray-300">
                 <div>
                   <h4 className="font-semibold">
-                    Frontend Developer at HypefactorAI (2024 - present)
+                    Software Developer at HypefactorAI (2024 - present)
                   </h4>
                   <p>
                     - Development of user interfaces for AI-powered marketing
@@ -96,6 +96,11 @@ export const About = () => {
                   <p>
                     - Coordinated with backend teams to ensure seamless
                     functionality and meet tight deadlines.
+                  </p>
+                  <p>
+                    Stripe integration, and leveraged user interaction data to
+                    guide strategic decisions, leading to a more secure,
+                    efficient user experience
                   </p>
                   <p>
                     - Headed the creation of OpenAI-powered assets, improving
